@@ -8,6 +8,7 @@ public class Car : MonoBehaviour
     public float turnSpeed;
     public Rigidbody2D rb;
     public SpriteRenderer sr;
+    public Sprite baseColor;
 
     private float verticalInput;
     private float horizontalInput;
@@ -31,5 +32,10 @@ public class Car : MonoBehaviour
          * The Horizontal Axis should make the player rotate on the Vector3.back axis
          */
 
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+
+        transform.Rotate(Vector3.back * Time.deltaTime * turnSpeed * horizontalInput);
+        transform.Translate(Vector2.up * Time.deltaTime * moveSpeed * verticalInput);
     }
 }
